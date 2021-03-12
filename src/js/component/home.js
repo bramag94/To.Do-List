@@ -5,8 +5,9 @@ export function Home() {
 	const [tareas, setTareas] = useState("");
 	const [lista, setLista] = useState([]);
 	return (
-		<div clasName="text-center mt-5">
-			<h1> TO DO LIST </h1>
+		<div className="text-center mt-5">
+			<h1>TO DO LIST </h1>
+
 			<input
 				type="text"
 				placeholder="Ingrese sus datos"
@@ -21,7 +22,20 @@ export function Home() {
 				}}
 			/>
 			{lista.map((item, index) => {
-				return <li key={index}>{item}</li>;
+				return (
+					<li
+						onDoubleClick={() => {
+							setLista(
+								lista.filter(
+									(itemf, indexf) => indexf !== index
+								)
+							);
+						}}
+						key={index}>
+						{" "}
+						{item}
+					</li>
+				);
 			})}
 		</div>
 	);
